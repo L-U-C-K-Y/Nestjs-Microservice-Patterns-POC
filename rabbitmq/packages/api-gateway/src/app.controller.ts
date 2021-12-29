@@ -15,11 +15,43 @@ export class AppController {
     const now = new Date()
     const time: string = now.toISOString()
     console.time(time)
+    const message = 'first - Replica 1'
     const result =  this.firstClient.send<string>(
       { cmd: 'first_service' },
-      'Message from',
+      message,
     );
-    console.log(result)
+    result.subscribe(res => {
+      // console.log(`res: ${res}`)
+      if (res !== message) {
+        console.log(`🤯 CRITICAL: DOES NOT MATCH SENDER MESSAGE`)
+      } else {
+        console.log('✅ Identical Message')
+      }
+    })
+    // console.log(result)
+    console.timeEnd(time)
+    return result
+  }
+
+  @Get('/otherFromFirst')
+  otherFromFirstTestFirstService(): Observable<string> {
+    const now = new Date()
+    const time: string = now.toISOString()
+    console.time(time)
+    const message = 'first - Replica 1'
+    const result =  this.firstClient.send<string>(
+      { cmd: 'first_service' },
+      message,
+    );
+    result.subscribe(res => {
+      // console.log(`res: ${res}`)
+      if (res !== message) {
+        console.log(`🤯 CRITICAL: DOES NOT MATCH SENDER MESSAGE`)
+      } else {
+        console.log('✅ Identical Message')
+      }
+    })
+    // console.log(result)
     console.timeEnd(time)
     return result
   }
@@ -32,7 +64,7 @@ export class AppController {
       { cmd: 'second_service' },
       'Message from',
     );
-    console.log(result)
+    // console.log(result)
     console.timeEnd(time)
     return result
   }
@@ -45,7 +77,7 @@ export class AppController {
       { cmd: 'third_service' },
       'Message from',
     );
-    console.log(result)
+    // console.log(result)
     console.timeEnd(time)
     return result
   }
@@ -56,7 +88,7 @@ export class AppController {
     const time: string = now.toISOString()
     console.time(time)
     const result = this.firstClient.send<string>({ cmd: 'undefined' }, 'Message from');
-    console.log(result)
+    // console.log(result)
     console.timeEnd(time)
     return result
   }

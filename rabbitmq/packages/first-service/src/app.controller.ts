@@ -11,7 +11,7 @@ export class AppController {
     console.log(context.getMessage())
     // console.log(context.getArgs())
     // console.log(context.getArgByIndex(0))
-    const msg = data + ' - first microservice!' + Date.now()
+    const msg = data
     console.log(msg)
     return msg;
   }

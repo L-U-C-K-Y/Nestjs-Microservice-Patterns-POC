@@ -10,6 +10,7 @@ async function bootstrap() {
       options: {
         urls: ['amqp://localhost:5672'],
         queue: 'first_queue',
+        // replyQueue: 'first_queue_reply',
         queueOptions: {
           durable: false
         },

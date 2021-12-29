@@ -12,7 +12,7 @@ import { AppController } from './app.controller';
           urls: ['amqp://localhost:5672'],
           queue: 'first_queue',
           queueOptions: {
-            durable: false
+            durable: false,
           },
         },
       },

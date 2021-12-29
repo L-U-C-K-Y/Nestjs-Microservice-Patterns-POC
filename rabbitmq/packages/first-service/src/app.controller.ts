@@ -15,4 +15,17 @@ export class AppController {
     console.log(msg)
     return msg;
   }
+
+  @MessagePattern({ cmd: 'first_service_other_command' })
+  microserviceTest2(@Payload() data: string, @Ctx() context: RmqContext): string {
+    console.log(context)
+    // console.log(context.getChannelRef())
+    // console.log(context.getPattern())
+    console.log(context.getMessage())
+    // console.log(context.getArgs())
+    // console.log(context.getArgByIndex(0))
+    const msg = data + data
+    console.log(msg)
+    return msg;
+  }
 }

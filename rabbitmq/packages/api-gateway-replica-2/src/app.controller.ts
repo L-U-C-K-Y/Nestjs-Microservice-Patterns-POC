@@ -56,6 +56,29 @@ export class AppController {
     return result
   }
 
+  @Get('/otherCommandFromFirst')
+  other2FromFirstTestFirstService(): Observable<string> {
+    const now = new Date()
+    const time: string = now.toISOString()
+    console.time(time)
+    const message = 'first - Replica 2, other 2'
+    const result =  this.firstClient.send<string>(
+      { cmd: 'first_service_other_command' },
+      message,
+    );
+    result.subscribe(res => {
+      // console.log(`res: ${res}`)
+      if (res !== message + message) {
+        console.log(`🤯 CRITICAL: DOES NOT MATCH SENDER MESSAGE`)
+      } else {
+        console.log('✅ Identical Message')
+      }
+    })
+    // console.log(result)
+    console.timeEnd(time)
+    return result
+  }
+
   @Get('/second')
   testSecondService(): Observable<string> {
     const now = new Date()

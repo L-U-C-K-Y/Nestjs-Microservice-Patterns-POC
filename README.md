@@ -19,7 +19,7 @@ The following test scenario has succeeded:
 - 3 Microservices
 - 1000 requests for each endpoint (4 requests) have been sent in the **same** queue so that both API gateways use to check if there might be interference
 
-![image](https://user-images.githubusercontent.com/14868134/147696195-a1731188-fac6-4967-a3df-1a1ea8f38339.png)
+![image](https://user-images.githubusercontent.com/14868134/147697138-34f91450-a4db-4448-a26f-cae668e44c31.png)
 
 ## Appendix
 
